@@ -26,7 +26,7 @@ describe('Testes da Funcionalidade Produtos', () => {
     });
 
     it('Deve cadastrar um produto com sucesso', () => {
-        let produto = `Produto EBAC ${Math.floor(Math.random() * 100000000)}`
+       let produto = `Produto EBAC ${Math.floor(Math.random() * 100000000)}`
         cy.request({
             method: 'POST',
             url: 'produtos',
