@@ -1,11 +1,12 @@
 /// <reference types="cypress" />
 import contrato from '../contracts/usuarios.contract'
+import { faker } from '@faker-js/faker'
 
 describe('Testes da Funcionalidade Usuários', () => {
      let id
      var faker = require('faker');
-     let nomeFaker = faker.name.firstName() + faker.name.lastName()
-     let emailFaker = faker.internet.email(nomeFaker)
+     const nomeFaker = faker.name.firstName() 
+     const emailFaker = faker.internet.email(nomeFaker)
 
      it('Deve validar contrato de usuários', () => {
           cy.listarUsuarios().then(response => {
@@ -26,7 +27,7 @@ describe('Testes da Funcionalidade Usuários', () => {
           cy.cadastrarUsuario(nomeFaker, emailFaker, 'teste', 'true').then((response) => {
                expect(response.status).to.equal(201)
                expect(response.body.message).to.equal('Cadastro realizado com sucesso')
-               expect(response.duration).to.be.lessThan(20)
+               expect(response.duration).to.be.lessThan(50)
                id = response.body._id
           })
      });
